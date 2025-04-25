@@ -23,7 +23,7 @@ class TestOrderFeed:
          before_total = order_feed_page.get_total_orders_number()
          before_today = order_feed_page.get_today_orders_number()
          ApiSteps.create_new_order(good_user)
-         order_feed_page.reload()
+         order_feed_page.wait_total_number_is_changed(before_total)
          after_total = order_feed_page.get_total_orders_number()
          after_today = order_feed_page.get_today_orders_number()
          assert after_total > before_total

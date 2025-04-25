@@ -38,7 +38,9 @@ def login_page(driver):
 
 @pytest.fixture()
 def restore_password_page(driver):
-    return RestorePasswordPage(driver)
+    restore_page = RestorePasswordPage(driver)
+    restore_page.open_page()
+    return restore_page
 
 
 @pytest.fixture()

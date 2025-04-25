@@ -14,7 +14,6 @@ import string
 
 
 class Utils:
-    DEFAULT_TIMEOUT = 5
 
     @staticmethod
     def get_random_email():
@@ -26,27 +25,24 @@ class Utils:
         random_string = ''.join(random.choice(letters) for i in range(length))
         return random_string
 
-    @staticmethod
-    def wait_element_visible(driver, locator):
-        return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.visibility_of_element_located(locator))
-
-    @staticmethod
-    def wait_element_not_visible(driver, locator):
-        return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.invisibility_of_element_located(locator))
-
-    @staticmethod
-    def wait_element_has_text(driver, locator, text):
-        return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.text_to_be_present_in_element(locator, str(text)))
-
-    @staticmethod
-    def get_ingredient_locator(hash_id):
-        return MainPageLocators.INGREDIENT_BY_ID[0], MainPageLocators.INGREDIENT_BY_ID[1].format(hash_id)
-
-    @staticmethod
-    @allure.step("Move item to location")
-    def drag_item_to_basket(driver, from_locator):
-        from_web_element = driver.find_element(*from_locator)
-        driver.execute_script("arguments[0].scrollIntoView(true);", from_web_element)
-        to_web_element = driver.find_element(*MainPageLocators.MAIN_BASKET)
-        ac = ActionChains(driver)
-        ac.drag_and_drop(from_web_element, to_web_element).pause(1).perform()
+    # @staticmethod
+    # def wait_element_visible(driver, locator):
+    #     return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.visibility_of_element_located(locator))
+    #
+    # @staticmethod
+    # def wait_element_not_visible(driver, locator):
+    #     return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.invisibility_of_element_located(locator))
+    #
+    # @staticmethod
+    # def wait_element_has_text(driver, locator, text):
+    #     return WebDriverWait(driver, Utils.DEFAULT_TIMEOUT).until(EC.text_to_be_present_in_element(locator, str(text)))
+    #
+    #
+    # @staticmethod
+    # @allure.step("Move item to location")
+    # def drag_item_to_basket(driver, from_locator):
+    #     from_web_element = driver.find_element(*from_locator)
+    #     driver.execute_script("arguments[0].scrollIntoView(true);", from_web_element)
+    #     to_web_element = driver.find_element(*MainPageLocators.MAIN_BASKET)
+    #     ac = ActionChains(driver)
+    #     ac.drag_and_drop(from_web_element, to_web_element).pause(1).perform()
