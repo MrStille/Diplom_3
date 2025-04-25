@@ -19,13 +19,3 @@ class LoginPage:
         Utils.wait_element_visible(self.driver, LoginPageLocators.FORGOT_PASSWORD)
         Utils.wait_element_visible(self.driver, LoginPageLocators.ENTER_LABEL)
         Utils.wait_element_visible(self.driver, LoginPageLocators.ENTER_BUTTON)
-
-    @allure.step("Open login page")
-    def open_login_page(self):
-        self.driver.get(Data.LOGIN_PAGE_URL)
-        Utils.wait_element_visible(self.driver, LoginPageLocators.FORGOT_PASSWORD).click()
-        # Utils.wait_element_visible(self.driver, )
-
-    @allure.step("Click forgot password link")
-    def open_forgot_password_page(self):
-        self.driver.find_element(*LoginPageLocators.FORGOT_PASSWORD).click()
